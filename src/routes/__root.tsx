@@ -7,10 +7,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AuthProvider } from "@/lib/auth-context";
+import { Toaster } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { recordLogin } from "@/lib/account.functions";
+import "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +41,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,19 +78,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "United Disabled Matrimony — Matrimonial for People with Disabilities" },
+      { name: "description", content: "A respectful matrimonial platform for visually impaired, hearing impaired, speech impaired, locomotor and other differently-abled people. Find a life partner who understands you." },
+      { property: "og:title", content: "United Disabled Matrimony — Matrimonial for People with Disabilities" },
+      { property: "og:description", content: "A respectful matrimonial platform for visually impaired, hearing impaired, speech impaired, locomotor and other differently-abled people. Find a life partner who understands you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "United Disabled Matrimony — Matrimonial for People with Disabilities" },
+      { name: "twitter:description", content: "A respectful matrimonial platform for visually impaired, hearing impaired, speech impaired, locomotor and other differently-abled people. Find a life partner who understands you." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1f3586ff-5b88-4ee5-930a-c4df129e5b98/id-preview-cce3fe71--feeac254-e17c-45a3-bbdf-ebf18c755035.lovable.app-1778877915021.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1f3586ff-5b88-4ee5-930a-c4df129e5b98/id-preview-cce3fe71--feeac254-e17c-45a3-bbdf-ebf18c755035.lovable.app-1778877915021.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap",
       },
     ],
   }),
@@ -99,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
+function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -116,10 +126,25 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    // Record every fresh sign-in (email/password, OAuth, etc.) exactly once
+    // per access token. Skips TOKEN_REFRESHED and INITIAL_SESSION events.
+    const seen = new Set<string>();
+    const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event !== "SIGNED_IN" || !session?.access_token) return;
+      if (seen.has(session.access_token)) return;
+      seen.add(session.access_token);
+      recordLogin().catch(() => { /* non-fatal */ });
+    });
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        <Outlet />
+        <Toaster richColors position="top-center" />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
