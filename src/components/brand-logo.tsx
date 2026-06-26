@@ -58,9 +58,8 @@ export function BrandLogo({ variant = "lockup", className, showTagline = false }
     <span className={cn("inline-flex items-center gap-2", className)}>
       <Icon size="md" />
       <span className="flex min-w-0 flex-col leading-none">
-        <span className="font-display text-lg leading-[1.1] tracking-tight text-foreground sm:text-xl">
-          <span className="hidden sm:inline">United Disabled Matrimony</span>
-          <span className="sm:hidden">UDM</span>
+        <span className="truncate font-display text-base leading-[1.1] tracking-tight text-foreground sm:text-xl">
+          United Disabled Matrimony
         </span>
         {showTagline && (
           <span className="mt-1 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
