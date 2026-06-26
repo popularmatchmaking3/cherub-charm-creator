@@ -503,7 +503,7 @@ export type Database = {
           last_seen_at: string | null
           marital_status: Database["public"]["Enums"]["marital_status"] | null
           membership_expires_at: string | null
-          membership_tier: Database["public"]["Enums"]["membership_tier"]
+          membership_tier: string
           mother_tongue: string | null
           occupation: string | null
           onboarding_draft: Json
@@ -571,7 +571,7 @@ export type Database = {
           last_seen_at?: string | null
           marital_status?: Database["public"]["Enums"]["marital_status"] | null
           membership_expires_at?: string | null
-          membership_tier?: Database["public"]["Enums"]["membership_tier"]
+          membership_tier?: string
           mother_tongue?: string | null
           occupation?: string | null
           onboarding_draft?: Json
@@ -639,7 +639,7 @@ export type Database = {
           last_seen_at?: string | null
           marital_status?: Database["public"]["Enums"]["marital_status"] | null
           membership_expires_at?: string | null
-          membership_tier?: Database["public"]["Enums"]["membership_tier"]
+          membership_tier?: string
           mother_tongue?: string | null
           occupation?: string | null
           onboarding_draft?: Json
@@ -879,7 +879,6 @@ export type Database = {
         Returns: boolean
       }
       any_admin_exists: { Args: never; Returns: boolean }
-      are_matched: { Args: { _a: string; _b: string }; Returns: boolean }
       is_approved: { Args: { _user_id: string }; Returns: boolean }
       touch_last_seen: { Args: never; Returns: undefined }
     }
