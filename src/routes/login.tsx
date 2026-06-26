@@ -52,8 +52,8 @@ function LoginPage() {
         <Link to="/" aria-label="United Disabled Matrimony — home" className="flex justify-center">
           <BrandLogo variant="full" className="max-w-[220px]" />
         </Link>
-        <h1 className="mt-6 font-display text-3xl">Welcome back</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h1 className="mt-6 text-center font-display text-3xl leading-tight">Welcome back</h1>
+        <p className="mt-2 text-center text-sm text-muted-foreground">
           Sign in to find your companion.
         </p>
 
