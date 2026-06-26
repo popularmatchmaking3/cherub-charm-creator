@@ -1,15 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand-logo";
 import type { ReactNode } from "react";
 
 export function SiteHeader() {
   return (
     <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-      <Link to="/" className="flex items-baseline gap-2">
-        <span className="font-display text-2xl">United Disabled Matrimony</span>
-        <span className="hidden text-xs uppercase tracking-[0.2em] text-muted-foreground sm:inline">
-          United Disabled Matrimony
-        </span>
+      <Link to="/" aria-label="United Disabled Matrimony — home">
+        <BrandLogo variant="lockup" />
       </Link>
       <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
         <Link to="/about" className="hover:text-foreground">About</Link>
@@ -34,8 +32,8 @@ export function SiteFooter() {
     <footer className="border-t border-border">
       <div className="mx-auto grid max-w-6xl gap-6 px-6 py-10 text-sm text-muted-foreground md:grid-cols-3">
         <div>
-          <p className="font-display text-lg text-foreground">United Disabled Matrimony</p>
-          <p className="mt-2">Respectful matrimonial space for the differently-abled, worldwide.</p>
+          <BrandLogo variant="lockup" showTagline />
+          <p className="mt-3">Respectful matrimonial space for the differently-abled, worldwide.</p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link to="/about" className="hover:text-foreground">About</Link>

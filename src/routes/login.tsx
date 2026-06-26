@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { BrandLogo } from "@/components/brand-logo";
 
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
@@ -48,7 +49,9 @@ function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-sm">
-        <Link to="/" className="font-display text-3xl">United Disabled Matrimony</Link>
+        <Link to="/" aria-label="United Disabled Matrimony — home" className="flex justify-center">
+          <BrandLogo variant="full" className="max-w-[220px]" />
+        </Link>
         <h1 className="mt-6 font-display text-3xl">Welcome back</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Sign in to find your companion.
