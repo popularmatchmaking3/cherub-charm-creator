@@ -14,6 +14,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import heroImage from "@/assets/hero-couple.jpg";
+import { BrandLogo } from "@/components/brand-logo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,11 +40,8 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl">United Disabled Matrimony</span>
-          <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            United Disabled Matrimony
-          </span>
+        <Link to="/" aria-label="United Disabled Matrimony — home">
+          <BrandLogo variant="lockup" />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <Link to="/about" className="hover:text-foreground">About</Link>
