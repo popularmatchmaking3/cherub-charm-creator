@@ -35,29 +35,30 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  /* Warm Sand palette */
-  --background: oklch(0.985 0.008 80);   /* #faf8f5 */
-  --foreground: oklch(0.32 0.025 60);    /* deep clay */
-  --card: oklch(0.97 0.012 80);
-  --card-foreground: oklch(0.32 0.025 60);
-  --popover: oklch(0.985 0.008 80);
-  --popover-foreground: oklch(0.32 0.025 60);
-  --primary: oklch(0.52 0.045 60);       /* #8b7355 clay */
+  --radius: 0.625rem;
+  /* Brand palette — derived from the United Disabled Matrimony logo
+     (deep navy + warm gold) anchored on a soft cream surface. */
+  --background: oklch(0.985 0.008 80);     /* #faf8f5 cream */
+  --foreground: oklch(0.24 0.05 265);      /* deep navy ink */
+  --card: oklch(1 0 0);                    /* pure white cards */
+  --card-foreground: oklch(0.24 0.05 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.05 265);
+  --primary: oklch(0.30 0.09 265);         /* logo navy */
   --primary-foreground: oklch(0.985 0.008 80);
-  --secondary: oklch(0.94 0.018 80);     /* #f0ebe3 */
-  --secondary-foreground: oklch(0.32 0.025 60);
-  --muted: oklch(0.94 0.018 80);
-  --muted-foreground: oklch(0.48 0.025 65);
-  --accent: oklch(0.78 0.04 75);         /* #c9b99a */
-  --accent-foreground: oklch(0.28 0.025 60);
+  --secondary: oklch(0.95 0.015 80);       /* warm sand */
+  --secondary-foreground: oklch(0.28 0.06 265);
+  --muted: oklch(0.95 0.015 80);
+  --muted-foreground: oklch(0.50 0.03 260);
+  --accent: oklch(0.78 0.13 80);           /* warm gold from logo */
+  --accent-foreground: oklch(0.24 0.05 265);
   --destructive: oklch(0.55 0.18 28);
   --destructive-foreground: oklch(0.985 0.008 80);
-  --border: oklch(0.88 0.02 75);
-  --input: oklch(0.9 0.018 75);
-  --ring: oklch(0.52 0.045 60);
-  --sand: oklch(0.94 0.018 80);
-  --clay: oklch(0.52 0.045 60);
+  --border: oklch(0.88 0.02 260);
+  --input: oklch(0.92 0.015 260);
+  --ring: oklch(0.30 0.09 265);
+  --sand: oklch(0.95 0.015 80);
+  --clay: oklch(0.30 0.09 265);
 }
 
 @layer base {
