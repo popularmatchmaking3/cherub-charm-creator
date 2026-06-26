@@ -247,8 +247,8 @@ function Index() {
       <footer className="border-t border-border">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-10 text-sm text-muted-foreground md:grid-cols-3">
           <div>
-            <p className="font-display text-lg text-foreground">United Disabled Matrimony</p>
-            <p className="mt-2">Respectful matrimonial space for the differently-abled, worldwide.</p>
+            <BrandLogo variant="lockup" showTagline />
+            <p className="mt-3">Respectful matrimonial space for the differently-abled, worldwide.</p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link to="/about" className="hover:text-foreground">About</Link>
