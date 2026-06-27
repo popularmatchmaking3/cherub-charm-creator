@@ -256,10 +256,16 @@ function Index() {
             <Link to="/vision" className="hover:text-foreground">Vision</Link>
             <Link to="/testimonials" className="hover:text-foreground">Stories</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
+            <Link to="/terms" className="hover:text-foreground">Terms</Link>
+            <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
+            <Link to="/data-protection" className="hover:text-foreground">Data Protection</Link>
+            <Link to="/guidelines" className="hover:text-foreground">Community Guidelines</Link>
+            <Link to="/faq" className="hover:text-foreground">FAQ</Link>
           </div>
           <p className="md:text-right">© {new Date().getFullYear()} United Disabled Matrimony. Made with care.</p>
         </div>
       </footer>
+
     </main>
   );
 }
