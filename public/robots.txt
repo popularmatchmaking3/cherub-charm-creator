@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /_authenticated
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /matches
+Disallow: /profile
+Disallow: /settings
+Disallow: /onboarding
+Disallow: /verification
+Disallow: /under-review
+Disallow: /membership
+Disallow: /recommendations
+Disallow: /search
+Disallow: /support
+Disallow: /call
+Disallow: /reset-password
+Disallow: /appeal
+
+Sitemap: https://uniteddisabledmatrimony.com/sitemap.xml
