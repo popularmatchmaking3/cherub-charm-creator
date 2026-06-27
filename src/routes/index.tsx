@@ -108,8 +108,13 @@ function Index() {
             alt="A joyful couple holding hands at golden hour"
             width={1536}
             height={1280}
+            loading="eager"
+            decoding="async"
+            // @ts-expect-error - fetchpriority is a valid HTML attribute
+            fetchpriority="high"
             className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl"
           />
+
           <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-border bg-card p-4 shadow-lg md:block">
             <p className="font-display text-3xl text-primary">12,000+</p>
             <p className="text-xs uppercase tracking-widest text-muted-foreground">
