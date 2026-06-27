@@ -162,7 +162,7 @@ function Index() {
               How it works
             </p>
             <h2 className="mt-3 font-display text-4xl md:text-5xl">
-              Three quiet steps to a meaningful match.
+              Simple steps to a meaningful match.
             </h2>
           </div>
           <ol className="space-y-10">
