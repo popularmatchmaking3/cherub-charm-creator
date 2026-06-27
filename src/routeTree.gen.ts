@@ -14,6 +14,7 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SuggestionsRouteImport } from './routes/suggestions'
 import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -80,6 +81,11 @@ const SuggestionsRoute = SuggestionsRouteImport.update({
 const StoriesRoute = StoriesRouteImport.update({
   id: '/stories',
   path: '/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignupRoute = SignupRouteImport.update({
@@ -318,6 +324,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stories': typeof StoriesRoute
   '/suggestions': typeof SuggestionsRoute
   '/terms': typeof TermsRoute
@@ -366,6 +373,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stories': typeof StoriesRoute
   '/suggestions': typeof SuggestionsRoute
   '/terms': typeof TermsRoute
@@ -414,6 +422,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stories': typeof StoriesRoute
   '/suggestions': typeof SuggestionsRoute
   '/terms': typeof TermsRoute
@@ -464,6 +473,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reset-password'
     | '/signup'
+    | '/sitemap.xml'
     | '/stories'
     | '/suggestions'
     | '/terms'
@@ -512,6 +522,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reset-password'
     | '/signup'
+    | '/sitemap.xml'
     | '/stories'
     | '/suggestions'
     | '/terms'
@@ -559,6 +570,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reset-password'
     | '/signup'
+    | '/sitemap.xml'
     | '/stories'
     | '/suggestions'
     | '/terms'
@@ -609,6 +621,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SignupRoute: typeof SignupRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StoriesRoute: typeof StoriesRoute
   SuggestionsRoute: typeof SuggestionsRoute
   TermsRoute: typeof TermsRoute
@@ -651,6 +664,13 @@ declare module '@tanstack/react-router' {
       path: '/stories'
       fullPath: '/stories'
       preLoaderRoute: typeof StoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signup': {
@@ -1070,6 +1090,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SignupRoute: SignupRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StoriesRoute: StoriesRoute,
   SuggestionsRoute: SuggestionsRoute,
   TermsRoute: TermsRoute,
@@ -1079,13 +1100,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
