@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "CherubNative",
+    "slug": "cherub-native",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "platforms": ["android"],
+    "android": {
+      "package": "com.popularmatchmaking3.cherub",
+      "permissions": []
+    }
+  }
+}
