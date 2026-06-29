@@ -1,9 +1,0 @@
-{
-  "name": "cherub-native",
-  "private": true,
-  "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "eas:build": "eas build -p android --profile production --non-interactive"
-  }
-}
